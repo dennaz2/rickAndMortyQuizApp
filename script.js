@@ -1,9 +1,9 @@
-let score = 0;
+let score = 10;
 let questionNumber = 0;
 let acceptAns = false;
 
 
-let quiz = [{ 
+let quiz = [{
         title: "Who is Rick’s grandson?",
         answer1: "Morty",
         answer2: "Bart Simpson",
@@ -70,19 +70,19 @@ let quiz = [{
     },
     {
         title: "What item helps Rick travel between universes?",
-        answer1: "C-137",
-        answer2: "C-119",
-        answer3: "C-147",
+        answer1: "Portal gun",
+        answer2: "Concentrated dark matter",
+        answer3: "Plumbus",
         answer4: "Andromeda",
         correctAnswer: 2
     },
     {
         title: "What's the name of this happy-go-lucky blue colored creature?",
         answer1: "Squanchy",
-        answer2: "Beth",
-        answer3: "Stimpy",
+        answer2: "Dexter",
+        answer3: "Plumbus",
         answer4: "Mr. Meeseeks",
-        correctAnswer: 4
+        correctAnswer: 1
     },
     {
         title: "What does Beth Smith do for a living?",
@@ -107,7 +107,7 @@ function startQuiz(event) {
     event.preventDefault();
     let mainScreen = document.querySelector('.start');
     mainScreen.style.display = "none";
-    
+
     quesScreen.classList.add('open');
     showQuestion();
 }
@@ -127,7 +127,6 @@ function showQuestion() {
     acceptAns = true;
     quesP.innerText = `Question: ${questionNumber}`;
     if (questionNumber === 10) {
-
         sumScreen.classList.add('open');
         quesScreen.style.display = 'none';
     }
@@ -158,13 +157,20 @@ choices.forEach(choice => {
         let selectedChoice = event.target;
 
         let selectedAns = selectedChoice.dataset["number"];
-        console.log(selectedAns);
-        if (selectedAns === 10) {
-            sumScreen.classList.add('open');
-            console.log("milk");
-        }
 
-        showQuestion();
+        const isCorrect = selectedAns == currentQuestion.correctAnswer ? "correct" : "incorrect";
+        selectedChoice.parentElement.classList.add(isCorrect);
+
+        // if (selectedAns == currentQuestion.correctAnswer) {
+        //     selectedChoice.parentElement.classList.add('correct');
+        // } else {
+        //     selectedChoice.parentElement.classList.add('incorrect');
+        // }
+
+        setTimeout(() => {
+            selectedChoice.parentElement.classList.remove(isCorrect);
+            showQuestion();
+        }, 1000);
 
     });
 
