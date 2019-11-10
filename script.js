@@ -2,7 +2,8 @@ let score = 0;
 let questionNumber = 0;
 let acceptAns = false;
 
-let quiz = [{
+
+let quiz = [{ 
         title: "Who is Rick’s grandson?",
         answer1: "Morty",
         answer2: "Bart Simpson",
@@ -69,12 +70,6 @@ let quiz = [{
     },
     {
         title: "What item helps Rick travel between universes?",
-        answer: [
-            "Bart Simpson.",
-            "Stimpy.",
-            "Portal Gun",
-            "They Coyote."
-        ],
         answer1: "C-137",
         answer2: "C-119",
         answer3: "C-147",
@@ -88,36 +83,54 @@ let quiz = [{
         answer3: "Stimpy",
         answer4: "Mr. Meeseeks",
         correctAnswer: 4
+    },
+    {
+        title: "What does Beth Smith do for a living?",
+        answer1: "Horse heart surgery",
+        answer2: "stay at home mom",
+        answer3: "store clerk",
+        answer4: "office job",
+        correctAnswer: 1
     }
+
 ];
 
+let maxQuestion = quiz.length;
 //start quiz, when clicking the start btn
 
 let startBtn = document.querySelector('.start-btn');
 startBtn.addEventListener('click', startQuiz);
+let sumScreen = document.querySelector(".summaryScreen");
+let quesScreen = document.querySelector('.question-form');
 
 function startQuiz(event) {
     event.preventDefault();
     let mainScreen = document.querySelector('.start');
     mainScreen.style.display = "none";
-    let quesScreen = document.querySelector('.question-form');
+    
     quesScreen.classList.add('open');
-    questionNumber++;
     showQuestion();
 }
 
 //Show Question 
 let questions = document.querySelector('.question');
 let currentQuestion = {};
+let quesP = document.querySelector('.q-num');
 
 function showQuestion() {
     let question = Math.floor(Math.random() * quiz.length);
     currentQuestion = quiz[question];
     questions.innerText = currentQuestion.title;
     showAnswers();
-
+    questionNumber++;
     quiz.splice(question, 1);
     acceptAns = true;
+    quesP.innerText = `Question: ${questionNumber}`;
+    if (questionNumber === 10) {
+
+        sumScreen.classList.add('open');
+        quesScreen.style.display = 'none';
+    }
 }
 
 //show questions
@@ -134,23 +147,25 @@ function showAnswers() {
 
 }
 
+
 choices.forEach(choice => {
     choice.addEventListener('click', event => {
         if (!acceptAns) {
             return;
         }
-        
+
         acceptAns = false;
         let selectedChoice = event.target;
 
         let selectedAns = selectedChoice.dataset["number"];
         console.log(selectedAns);
+        if (selectedAns === 10) {
+            sumScreen.classList.add('open');
+            console.log("milk");
+        }
 
         showQuestion();
+
     });
 
 });
-
-function showSummary(){
-
-}
