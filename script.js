@@ -77,7 +77,7 @@ let quiz = [{
         correctAnswer: 1
     },
     {
-        title: "What's the name of this happy-go-lucky blue colored creature?",
+        title: "What's the name of the happy-go-lucky blue colored creature?",
         answer1: "Squanchy",
         answer2: "Dexter",
         answer3: "Plumbus",
@@ -101,7 +101,7 @@ startBtn.addEventListener('click', startQuiz);
 let sumScreen = document.querySelector(".summaryScreen");
 let quesScreen = document.querySelector('.question-form');
 let mainScreen = document.querySelector('.start');
-    
+
 function startQuiz(event) {
     event.preventDefault();
     mainScreen.style.display = "none";
@@ -189,4 +189,3 @@ restartBtn.addEventListener("click", restart);
 function restart(event) {
     document.location.reload();
 }
-
