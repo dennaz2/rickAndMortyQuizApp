@@ -108,7 +108,7 @@ h1 {
 }
 
 .open {
-    display: block;
+    display: inline-block;
 }
 
 .remove {
