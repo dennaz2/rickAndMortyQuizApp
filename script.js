@@ -187,8 +187,6 @@ let restartBtn = document.querySelector('.restart-btn');
 restartBtn.addEventListener("click", restart);
 
 function restart(event) {
-    mainScreen.style.display = "flex";
-    sumScreen.style.display = "none";
-    startQuiz();
+    document.location.reload();
 }
 
