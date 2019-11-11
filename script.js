@@ -1,4 +1,4 @@
-let score = 10;
+let score = 0;
 let questionNumber = 0;
 let acceptAns = false;
 
@@ -74,7 +74,7 @@ let quiz = [{
         answer2: "Concentrated dark matter",
         answer3: "Plumbus",
         answer4: "Andromeda",
-        correctAnswer: 2
+        correctAnswer: 1
     },
     {
         title: "What's the name of this happy-go-lucky blue colored creature?",
@@ -82,7 +82,7 @@ let quiz = [{
         answer2: "Dexter",
         answer3: "Plumbus",
         answer4: "Mr. Meeseeks",
-        correctAnswer: 1
+        correctAnswer: 4
     },
     {
         title: "What does Beth Smith do for a living?",
@@ -95,17 +95,15 @@ let quiz = [{
 
 ];
 
-let maxQuestion = quiz.length;
 //start quiz, when clicking the start btn
-
 let startBtn = document.querySelector('.start-btn');
 startBtn.addEventListener('click', startQuiz);
 let sumScreen = document.querySelector(".summaryScreen");
 let quesScreen = document.querySelector('.question-form');
-
+let mainScreen = document.querySelector('.start');
+    
 function startQuiz(event) {
     event.preventDefault();
-    let mainScreen = document.querySelector('.start');
     mainScreen.style.display = "none";
 
     quesScreen.classList.add('open');
@@ -116,6 +114,8 @@ function startQuiz(event) {
 let questions = document.querySelector('.question');
 let currentQuestion = {};
 let quesP = document.querySelector('.q-num');
+let scoreEl = document.querySelector('.score');
+let finalScore = document.querySelector('.final-score');
 
 function showQuestion() {
     let question = Math.floor(Math.random() * quiz.length);
@@ -126,9 +126,12 @@ function showQuestion() {
     quiz.splice(question, 1);
     acceptAns = true;
     quesP.innerText = `Question: ${questionNumber}`;
-    if (questionNumber === 10) {
+    scoreEl.innerText = `Score: ${score}%`;
+
+    if (questionNumber === 11) {
         sumScreen.classList.add('open');
         quesScreen.style.display = 'none';
+        finalScore.innerText = `You've scored ${score}%`;
     }
 }
 
@@ -146,7 +149,7 @@ function showAnswers() {
 
 }
 
-
+//answer choices, correct and incorrect
 choices.forEach(choice => {
     choice.addEventListener('click', event => {
         if (!acceptAns) {
@@ -161,11 +164,9 @@ choices.forEach(choice => {
         const isCorrect = selectedAns == currentQuestion.correctAnswer ? "correct" : "incorrect";
         selectedChoice.parentElement.classList.add(isCorrect);
 
-        // if (selectedAns == currentQuestion.correctAnswer) {
-        //     selectedChoice.parentElement.classList.add('correct');
-        // } else {
-        //     selectedChoice.parentElement.classList.add('incorrect');
-        // }
+        if (isCorrect === "correct") {
+            incrementScore();
+        }
 
         setTimeout(() => {
             selectedChoice.parentElement.classList.remove(isCorrect);
@@ -175,3 +176,19 @@ choices.forEach(choice => {
     });
 
 });
+
+//score 
+function incrementScore() {
+    score += 10;
+}
+
+//restart quiz
+let restartBtn = document.querySelector('.restart-btn');
+restartBtn.addEventListener("click", restart);
+
+function restart(event) {
+    mainScreen.style.display = "flex";
+    sumScreen.style.display = "none";
+    startQuiz();
+}
+

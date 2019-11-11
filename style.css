@@ -13,6 +13,12 @@ body {
 
 .logo {
     width: 70%;
+    margin: 0 auto;
+}
+
+.sum-logo {
+    display: flex;
+    justify-content: center;
 }
 
 .start {
@@ -96,6 +102,11 @@ h1 {
     margin: 20px;
 }
 
+.sum-logo {
+    width: 70%;
+    margin: 0 auto;
+}
+
 .open {
     display: block;
 }
@@ -112,7 +123,9 @@ h1 {
     background-color: red;
 }
 
-.q-num {
+.q-num,
+.score,
+.final-score {
     text-align: center;
 }
 
@@ -134,7 +147,11 @@ h1 {
         display: none;
         width: 100%
     }
-
+    
+    .sum-logo {
+        display: flex;
+        justify-content: center;
+    }
 
     button {
         background-color: #2eb8b8;
@@ -192,7 +209,9 @@ h1 {
         display: none;
     }
 
-    .q-num {
+    .q-num,
+    .score,
+    .final-score {
         text-align: center;
     }
 
