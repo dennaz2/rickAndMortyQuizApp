@@ -94,7 +94,7 @@ h1 {
 }
 
 .question-form {
-    margin: 20px;
+    margin: 10px;
 }
 
 .answerChoices {
@@ -147,7 +147,7 @@ h1 {
         display: none;
         width: 100%
     }
-    
+
     .sum-logo {
         display: flex;
         justify-content: center;
@@ -193,7 +193,7 @@ h1 {
     }
 
     .question-form {
-        margin: 20px;
+        margin: 10px;
     }
 
     .answerChoices {
