@@ -7,7 +7,7 @@
 }
 
 body {
-    background-image: url(portal.jpg);
+    background-image: url(/assesets/portal.jpg);
     background-repeat: no-repeat;
 }
 
@@ -46,6 +46,7 @@ button {
     cursor: pointer;
     padding: 20px;
     border-radius: 35px;
+    margin: 10px;
 }
 
 
@@ -142,6 +143,10 @@ h1 {
         align-items: center;
     }
 
+    .start{
+        margin: 20px;
+    }
+
     .quizQs,
     .summaryScreen {
         display: none;
@@ -161,7 +166,6 @@ h1 {
         text-decoration: none;
         display: inline-block;
         font-size: 16px;
-        margin: 4px 2px;
         cursor: pointer;
     }
 

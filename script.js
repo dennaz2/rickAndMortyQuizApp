@@ -37,7 +37,7 @@ let quiz = [{
         correctAnswer: 4
     },
     {
-        title: "what are schemekles?",
+        title: "What are schemekles?",
         answer1: "Alien people",
         answer2: "Ricks gun",
         answer3: "A currency",
@@ -49,7 +49,7 @@ let quiz = [{
         answer1: "Wubba Lubba Dub Dub",
         answer2: "I love my grandkids",
         answer3: "Get schifty ",
-        answer4: "im in me mums car",
+        answer4: "I'm in me mums car",
         correctAnswer: 4
     },
     {
@@ -87,9 +87,9 @@ let quiz = [{
     {
         title: "What does Beth Smith do for a living?",
         answer1: "Horse heart surgery",
-        answer2: "stay at home mom",
-        answer3: "store clerk",
-        answer4: "office job",
+        answer2: "Stay at home mom",
+        answer3: "Store clerk",
+        answer4: "Office job",
         correctAnswer: 1
     }
 
@@ -105,7 +105,6 @@ let mainScreen = document.querySelector('.start');
 function startQuiz(event) {
     event.preventDefault();
     mainScreen.style.display = "none";
-
     quesScreen.classList.add('open');
     showQuestion();
 }
@@ -121,6 +120,7 @@ function showQuestion() {
     let question = Math.floor(Math.random() * quiz.length);
     currentQuestion = quiz[question];
     questions.innerText = currentQuestion.title;
+
     showAnswers();
     questionNumber++;
     quiz.splice(question, 1);
@@ -137,7 +137,6 @@ function showQuestion() {
 
 //show questions
 let choices = document.querySelectorAll('.text');
-console.log(choices);
 
 function showAnswers() {
 
@@ -145,8 +144,6 @@ function showAnswers() {
         let quesNum = choice.dataset["number"];
         choice.innerText = currentQuestion["answer" + quesNum];
     });
-
-
 }
 
 //answer choices, correct and incorrect
